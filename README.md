@@ -26,7 +26,7 @@ C++ Signal and Slot between two classes
 
 ### 使用方法  
 
-...
+~~~cpp
 int main()
 {
   A* pA = new A;
@@ -34,7 +34,6 @@ int main()
 	C* pC = new C;
 	CONNECT_SOLOT_TO_SIGNAL(pC, ValueChanged, pA, &A::FuncOfA);
 	CONNECT_SOLOT_TO_SIGNAL(pC, ValueChanged, pB, &B::FuncOfB);
-
 	pC->SetValue(10,1.1); /* A::FuncOfA(10)
 	                     B::FuncOfB(10) */
 	pC->SetValue(5,1.1);  /* A::FuncOfA(5)
@@ -45,4 +44,4 @@ int main()
 	delete pA;
 	return 0;
 }
-...
+~~~cpp
