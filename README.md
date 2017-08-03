@@ -46,4 +46,4 @@ int main()
 }
 
 #### 结果如下
-![](https://github.com/fxconfig/Signal_slot/image.png)  
+![](Signal_slot/image.png)  
