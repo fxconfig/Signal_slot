@@ -46,4 +46,4 @@ int main()
 }
 
 #### 结果如下
-![](https://github.com/guodongxiaren/ImageCache/raw/master/Logo/foryou.gif)  
+![](https://github.com/fxconfig/Signal_slot/image.png)  
