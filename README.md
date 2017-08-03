@@ -44,4 +44,3 @@ int main()
 	delete pA;
 	return 0;
 }
-~~~cpp
