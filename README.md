@@ -27,6 +27,46 @@ C++ Signal and Slot between two classes
 ### 使用方法  
 
 ~~~cpp
+class A
+{
+public:
+	void FuncOfA(int param,double p2)
+	{
+		printf("A::FuncOfA(%d)     (%f)\n", param, p2);
+	}
+};
+class B
+{
+public:
+	void FuncOfB(int param, double p2)
+	{
+		printf("B::FuncOfB(%d)     (%f)\n", param,p2);
+	}
+};
+···cpp
+class C
+{
+public:
+	C()
+	{
+		m_Value = 0;
+		m_V2 = 0.0;
+	}
+	void SetValue(int value,double v2)
+	{
+		if (m_Value != value || m_V2 != v2)
+		{
+			m_Value = value;
+			m_V2 = v2;
+			ValueChanged(m_Value,m_V2);
+		}
+	}
+public:
+	Signal<int,double> ValueChanged;
+private:
+	int m_Value;
+	double m_V2;
+};
 int main()
 {
   A* pA = new A;
