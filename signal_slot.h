@@ -13,6 +13,9 @@
 
 
 #pragma once
+
+#ifndef _M_SIGNAL_SLOT_H_
+#define _M_SIGNAL_SLOT_H_
 #include <vector>
 
 template<class ... Args>
@@ -70,4 +73,6 @@ private:
 	std::vector< SlotBase<Args ...>* > m_pSlotSet;
 };
 
-#define CONNECT_SOLOT_TO_SIGNAL( sender, signal, receiver, method) ( (sender)->signal.Bind(receiver, method) )
+#define CONNECT_SOLOT_TO_SIGNAL( pSender,signal,pRreceiver,pMethod) ((pSender)->signal.Bind(pRreceiver, pMethod))
+
+#endif
