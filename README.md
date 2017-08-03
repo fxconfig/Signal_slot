@@ -30,61 +30,65 @@ C++ Signal and Slot between two classes
 class A
 {
 public:
-	void FuncOfA(int param,double p2)
-	{
-		printf("A::FuncOfA(%d)     (%f)\n", param, p2);
-	}
+    void FuncOfA(int param,double p2)
+    {
+	printf("A::FuncOfA(%d)     (%f)\n", param, p2);
+    }
 };
 class B
 {
 public:
-	void FuncOfB(int param, double p2)
-	{
-		printf("B::FuncOfB(%d)     (%f)\n", param,p2);
-	}
+    void FuncOfB(int param, double p2)
+    {
+	printf("B::FuncOfB(%d)     (%f)\n", param,p2);
+    }
 };
 ···cpp
 class C
 {
 public:
-	C()
+    C()
+    {
+	m_Value = 0;
+	m_V2 = 0.0;
+    }
+    void SetValue(int value,double v2)
+    {
+	if (m_Value != value || m_V2 != v2)
 	{
-		m_Value = 0;
-		m_V2 = 0.0;
+		m_Value = value;
+		m_V2 = v2;
+		ValueChanged(m_Value,m_V2);
 	}
-	void SetValue(int value,double v2)
-	{
-		if (m_Value != value || m_V2 != v2)
-		{
-			m_Value = value;
-			m_V2 = v2;
-			ValueChanged(m_Value,m_V2);
-		}
-	}
+    }
 public:
-	Signal<int,double> ValueChanged;
+    Signal<int,double> ValueChanged;
 private:
-	int m_Value;
-	double m_V2;
+    int m_Value;
+    double m_V2;
 };
 int main()
 {
-  A* pA = new A;
-	B* pB = new B;
-	C* pC = new C;
-	CONNECT_SOLOT_TO_SIGNAL(pC, ValueChanged, pA, &A::FuncOfA);
-	CONNECT_SOLOT_TO_SIGNAL(pC, ValueChanged, pB, &B::FuncOfB);
-	pC->SetValue(10,1.1); /* A::FuncOfA(10)
-	                     B::FuncOfB(10) */
-	pC->SetValue(5,1.1);  /* A::FuncOfA(5)
-	                     B::FuncOfB(5) */
-	pC->SetValue(5,1.2);
-	delete pC;
-	delete pB;
-	delete pA;
-	return 0;
-}  
-···     
-
-#### 结果如下
+    A* pA = new A;
+    B* pB = new B;
+    C* pC = new C;
+    CONNECT_SOLOT_TO_SIGNAL(pC, ValueChanged, pA, &A::FuncOfA);
+    CONNECT_SOLOT_TO_SIGNAL(pC, ValueChanged, pB, &B::FuncOfB);
+    pC->SetValue(10,1.1); /* A::FuncOfA(10)
+		     B::FuncOfB(10) */
+    pC->SetValue(5,1.1);  /* A::FuncOfA(5)
+		     B::FuncOfB(5) */
+    pC->SetValue(5,1.2);
+    delete pC;
+    delete pB;
+    delete pA;
+    return 0;
+}
+ 
+   
+   
+   
+   
+   
+### 结果如下
 ![image](https://github.com/fxconfig/Signal_slot/master/image.png)  
