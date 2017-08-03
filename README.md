@@ -44,3 +44,6 @@ int main()
 	delete pA;
 	return 0;
 }
+
+#### 结果如下
+![](https://github.com/guodongxiaren/ImageCache/raw/master/Logo/foryou.gif)  
