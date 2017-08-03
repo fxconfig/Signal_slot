@@ -34,6 +34,7 @@ public:
 	}
 	void Exec(Args ... params)
 	{
+		if (0 == m_pObj || 0 == m_Func) return;   //添加以防止意外访问
 		(m_pObj->*m_Func)(params ...);
 	}
 private:
