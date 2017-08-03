@@ -43,8 +43,8 @@ int main()
 	delete pB;
 	delete pA;
 	return 0;
-}
-···
+}  
+···     
 
 #### 结果如下
 ![image](https://github.com/fxconfig/Signal_slot/master/image.png)  
